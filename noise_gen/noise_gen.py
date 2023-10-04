@@ -39,7 +39,7 @@ def createNoiseFolder(speech_commands, noise_path, noise_type, output_folder, sn
 
 def getSpeechCommands(speech_commands_folder):
     speech_commands = os.listdir(speech_commands_folder)
-    speech_commands = {command: f"{speech_commands_folder}/{command}" for command in speech_commands if command[0] != "_" and ".txt" not in command and command != "LICENSE" and command != "README.md"}
+    speech_commands = {command: f"{speech_commands_folder}/{command}" for command in speech_commands if command[0] != "_" and command[0] != "." and ".txt" not in command and command != "LICENSE" and command != "README.md"}
     return speech_commands
 
 
