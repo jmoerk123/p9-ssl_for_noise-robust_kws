@@ -1,6 +1,7 @@
 import numpy as np
 import os
 from tqdm import tqdm
+from argparse import ArgumentParser
 
 def saveNewTxt(generated_path, file, save_path):
     paths = np.loadtxt(f"{generated_path}/_generated/{file}", dtype=str, delimiter="\n")
@@ -20,6 +21,11 @@ def main(generated_path, save_path):
 
 
 if __name__ == "__main__":
-    generated_path = "/home/jacobuni/uni-projects/google_speech_commands_v2"
-    save_path = "/home/jacobuni/uni-projects/noisy_google_speech_commands_v2/bbl/snr0"
-    main(generated_path, save_path)
+    parser = ArgumentParser(description="Arguments for generating noisy trainign data")
+    parser.add_argument("-o", "--generated_path", type=str, required=True, help="Path to google_speech_command")
+    parser.add_argument("-s", "--save_path", type=str, required=True, help="Path to the noisy folder")
+    # generated_path = "/home/jacobuni/uni-projects/google_speech_commands_v2"
+    # save_path = "/home/jacobuni/uni-projects/noisy_google_speech_commands_v2/bbl/snr0"
+
+    args = parser.parse_args()
+    main(args.generated_path, args.save_path)
