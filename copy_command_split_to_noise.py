@@ -4,7 +4,7 @@ from tqdm import tqdm
 from argparse import ArgumentParser
 
 def saveNewTxt(generated_path, file, save_path):
-    paths = np.loadtxt(f"{generated_path}/_generated/{file}", dtype=str, delimiter="\n")
+    paths = np.genfromtxt(f"{generated_path}/_generated/{file}", dtype=str, delimiter="\n")
     new_paths = np.empty_like(paths)
     for i, path in enumerate(paths):
         new_paths[i] = np.char.replace(path, generated_path, save_path)
