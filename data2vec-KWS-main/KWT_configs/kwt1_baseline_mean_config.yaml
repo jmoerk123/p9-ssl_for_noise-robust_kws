@@ -1,7 +1,7 @@
 # Sample config
 
 # Data paths
-data_root: speech_commands_v0.02/
+data_root: $HOME/data/speech_commands_v0.02/
 train_list_file: speech_commands_v0.02/_generated/training_list.txt
 val_list_file: speech_commands_v0.02/_generated/validation_list.txt
 test_list_file: speech_commands_v0.02/_generated/testing_list.txt
@@ -11,7 +11,7 @@ exp:
     wandb: False
     wandb_api_key: 
     proj_name: data2vec_KWS
-    exp_dir: ./runs
+    exp_dir: $HOME/data/runs
     exp_name: kwt1_baseline_mean
     device: auto
     log_freq: 20    # log every l_f steps
