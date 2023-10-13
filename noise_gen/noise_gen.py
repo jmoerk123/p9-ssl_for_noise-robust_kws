@@ -31,7 +31,7 @@ def addNoise(wav_file, noise_file, new_file, snr):
 
 def createNoiseFolder(speech_commands, noise_path, noise_type, output_folder, snr):
     for speech_command, speech_command_folder in tqdm(speech_commands.items(), position=0, leave=True):
-        noisy_speech_command_folder = f"{output_folder}/{noise_type}/snr{int(snr)}/{speech_command}"
+        noisy_speech_command_folder = f"{output_folder}/snr{int(snr)}/{speech_command}"
         os.makedirs(noisy_speech_command_folder, exist_ok=True)
         speech_command_files = os.listdir(speech_command_folder)
         for speech_command_file in tqdm(speech_command_files, position=1, leave=True):
