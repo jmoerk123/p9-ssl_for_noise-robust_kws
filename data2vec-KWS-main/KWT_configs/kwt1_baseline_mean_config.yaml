@@ -8,7 +8,7 @@ test_list_file: data/google_speech_commands/_generated/testing_list.txt
 label_map: data/google_speech_commands/_generated/label_map.json
 
 exp:
-    wandb: False
+    wandb: True
     wandb_api_key: 
     proj_name: data2vec_KWS
     exp_dir: data/runs
