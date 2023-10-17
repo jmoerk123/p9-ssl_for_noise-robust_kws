@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Baselines
-python train.py --conf KWT_configs/kwt1_baseline_mean_config.yaml
+python train.py --conf projects/p9-ssl_for_noise-robust_kws/data2vec-KWS-main/KWT_configs/kwt1_baseline_mean_config.yaml
 # python train.py --conf KWT_configs/kwt2_baseline_mean_config.yaml
 # python train.py --conf KWT_configs/kwt3_baseline_mean_config.yaml
 
