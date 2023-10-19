@@ -1,19 +1,18 @@
 # sample config
-
-data_root: /home/jacobuni/uni-projects/google_speech_commands_v2/
-train_list_file: /home/jacobuni/uni-projects/google_speech_commands_v2/_generated/pretraining_list.txt # Pretraining set is used
-val_list_file: /home/jacobuni/uni-projects/google_speech_commands_v2/_generated/validation_list.txt
-test_list_file: /home/jacobuni/uni-projects/google_speech_commands_v2/_generated/testing_list.txt
+data_root: data/google_speech_commands/
+train_list_file: data/google_speech_commands/_generated/pretraining_list.txt # Pretraining set is used
+val_list_file: data/google_speech_commands/_generated/validation_list.txt
+test_list_file: data/google_speech_commands/_generated/testing_list.txt
 label_map: # No labels used for pretraining
 
 modality: audio # Use instance norm
 
 exp:
-    wandb: False
+    wandb: True
     wandb_api_key: 
     proj_name: data2vec_KWS
-    exp_dir: ./runs
-    exp_name: kwt1_data2vec
+    exp_dir: data/runs
+    exp_name: kwt1_data2vec_pre_nonoise
     device: auto
     log_freq: 20    # log every l_f steps
     log_to_file: True
@@ -23,12 +22,11 @@ exp:
     pin_memory: True
     cache: 0 # 0 -> no cache | 1 -> cache wavs | 2 -> cache specs; stops wav augments
     
-
 hparams:
     seed: 0
     batch_size: 512
     n_epochs: 200
-    device: "cpu"
+    device: "cuda"
     loss_beta: 2 # Ignored if MSE loss is used
 
     audio:
