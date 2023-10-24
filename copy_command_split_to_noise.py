@@ -8,8 +8,8 @@ def saveNewTxt(generated_path, file, save_path):
     new_paths = np.empty_like(paths)
     for i, path in enumerate(paths):
         new_paths[i] = np.char.replace(path, generated_path, save_path)
-    os.makedirs(f"{save_path}/_genetated", exist_ok=True)
-    np.savetxt(f"{save_path}/_genetated/{file}", new_paths, delimiter="\n", fmt='%s')
+    os.makedirs(f"{save_path}/_generated", exist_ok=True)
+    np.savetxt(f"{save_path}/_generated/{file}", new_paths, delimiter="\n", fmt='%s')
     
 
 

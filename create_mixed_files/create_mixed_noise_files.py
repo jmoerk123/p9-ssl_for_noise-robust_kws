@@ -13,8 +13,8 @@ def mix2(generated_path_noise1, generated_path_noise2, file, save_path):
 
     mixed_paths = np.concatenate((random_noise1, random_noise2), axis=None)
 
-    os.makedirs(f"{save_path}/_genetated", exist_ok=True)
-    np.savetxt(f"{save_path}/_genetated/{file}", mixed_paths, delimiter="\n", fmt='%s')
+    os.makedirs(f"{save_path}/_generated", exist_ok=True)
+    np.savetxt(f"{save_path}/_generated/{file}", mixed_paths, delimiter="\n", fmt='%s')
 
 
 def mix3(generated_path_noise1, generated_path_noise2, generated_path_noise3, file, save_path):
@@ -32,8 +32,8 @@ def mix3(generated_path_noise1, generated_path_noise2, generated_path_noise3, fi
 
     mixed_paths = np.concatenate((random_noise1, random_noise2, random_noise3), axis=None)
 
-    os.makedirs(f"{save_path}/_genetated", exist_ok=True)
-    np.savetxt(f"{save_path}/_genetated/{file}", mixed_paths, delimiter="\n", fmt='%s')
+    os.makedirs(f"{save_path}/_generated", exist_ok=True)
+    np.savetxt(f"{save_path}/_generated/{file}", mixed_paths, delimiter="\n", fmt='%s')
 
 def mix4(generated_path_noise1, generated_path_noise2, generated_path_noise3, generated_path_noise4, file, save_path):
     paths_noise1 = np.genfromtxt(f"{generated_path_noise1}/_generated/{file}", dtype=str, delimiter="\n")
