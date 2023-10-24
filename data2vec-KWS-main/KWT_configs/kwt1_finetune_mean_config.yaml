@@ -32,7 +32,8 @@ hparams:
     audio:
         sr: 16000
         n_mfcc: 40
-        kwargs:            n_mels: 80
+        kwargs:            
+            n_mels: 80
             n_fft: 480
             win_length: 480
             hop_length: 160
