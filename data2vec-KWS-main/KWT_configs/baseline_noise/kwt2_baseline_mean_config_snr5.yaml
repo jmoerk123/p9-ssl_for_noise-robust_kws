@@ -1,17 +1,17 @@
 # Sample config
 
 # Data paths
-data_root: $HOME/data/google_speech_commands/
+data_root: data/google_speech_commands/
 train_list_file: data/mixed_data/busxbbl/snr5/_generated/training_list.txt
 val_list_file: data/mixed_data/busxbbl/snr5/_generated/validation_list.txt
 test_list_file: data/mixed_data/busxbbl/snr5/_generated/testing_list.txt
-label_map: $HOME/data/google_speech_commands/_generated/label_map.json
+label_map: data/google_speech_commands/_generated/label_map.json
 
 exp:
     wandb: True
     wandb_api_key: 
     proj_name: data2vec_KWS
-    exp_dir: $HOME/data/runs
+    exp_dir: data/runs
     exp_name: kwt2_baseline_mean_snr5
     device: auto
     log_freq: 20    # log every l_f steps
