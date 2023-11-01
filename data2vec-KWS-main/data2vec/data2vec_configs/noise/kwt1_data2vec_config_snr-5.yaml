@@ -20,7 +20,7 @@ exp:
     val_freq: 5    # validate every v_f epochs
     n_workers: 1
     pin_memory: True
-    cache: 0 # 0 -> no cache | 1 -> cache wavs | 2 -> cache specs; stops wav augments
+    cache: 2 # 0 -> no cache | 1 -> cache wavs | 2 -> cache specs; stops wav augments
     
 hparams:
     seed: 0
