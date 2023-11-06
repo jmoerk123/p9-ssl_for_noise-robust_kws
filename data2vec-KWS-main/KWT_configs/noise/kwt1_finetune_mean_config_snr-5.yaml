@@ -4,7 +4,7 @@
 data_root: data/google_speech_commands/
 train_list_file: data/mixed_data/busxbbl/snr-5/_generated/training_list.txt
 val_list_file: data/mixed_data/busxbbl/snr-5/_generated/validation_list.txt
-test_list_file: data/mixed_data/busxbbl/snr-5//_generated/testing_list.txt
+test_list_file: data/mixed_data/busxbblxcafxssn/snr-5/_generated/testing_list.txt
 label_map: data/google_speech_commands/_generated/label_map.json
 
 exp:
@@ -12,7 +12,7 @@ exp:
     wandb_api_key: 
     proj_name: data2vec_KWS
     exp_dir: data/runs
-    exp_name: kwt1_finetune_mean_busxbbl_snr-5
+    exp_name: kwt1_finetune_mean_busxbbl_prenonoise_snr-5
     device: auto
     log_freq: 20    # log every l_f steps
     log_to_file: True
