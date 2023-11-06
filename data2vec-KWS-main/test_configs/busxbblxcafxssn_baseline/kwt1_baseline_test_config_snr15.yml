@@ -1,16 +1,16 @@
 # Sample config
 
 # Data paths
-data_root: /home/jacobuni/uni-projects/google_speech_commands_v2
-test_list_file: /home/jacobuni/uni-projects/google_speech_commands_v2/_generated/testing_list.txt
-label_map: /home/jacobuni/uni-projects/google_speech_commands_v2/_generated/label_map.json
+data_root: data/google_speech_commands/
+test_list_file: data/mixed_data/busxbblxcafxssn/snr15/_generated/testing_list.txt
+label_map: data/google_speech_commands/_generated/label_map.json
 
 exp:
     wandb: True
     wandb_api_key: 
     proj_name: data2vec_KWS
     exp_dir: data/runs
-    exp_name: kwt1_test_mean_busxbbl
+    exp_name: kwt1_test_mean_busxbblxcafxssn_snr15
     device: auto
     log_freq: 20    # log every l_f steps
     log_to_file: False
