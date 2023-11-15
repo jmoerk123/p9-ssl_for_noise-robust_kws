@@ -84,7 +84,7 @@ def get_train_val_test_split(root: str, val_file: str, test_file: str, pretrain:
 class GoogleSpeechDataset(Dataset):
     """Dataset wrapper for Google Speech Commands V2."""
 
-    def __init__(self, data_list: list, audio_settings: dict, label_map: dict = None, aug_settings: dict = None,
+    def __init__(self, data_student_list: list, data_teacher_list: list, audio_settings: dict, label_map: dict = None, aug_settings: dict = None,
                  cache: int = 0):
         super().__init__()
 
@@ -94,15 +94,17 @@ class GoogleSpeechDataset(Dataset):
 
         if cache:
             print("Caching dataset into memory.")
-            self.data_list = init_cache(data_list, audio_settings["sr"], cache, audio_settings)
+            self.data_student_list = init_cache(data_student_list, audio_settings["sr"], cache, audio_settings)
+            self.data_teacher_list = init_cache(data_teacher_list, audio_settings["sr"], cache, audio_settings)
         else:
-            self.data_list = data_list
+            self.data_student_list = data_student_list
+            self.data_teacher_list = data_teacher_list
 
         # labels: if no label map is provided, will not load labels. (Use for inference)
         if label_map is not None:
             self.label_list = []
             label_2_idx = {v: int(k) for k, v in label_map.items()}
-            for path in data_list:
+            for path in data_student_list:
                 self.label_list.append(label_2_idx[Path(path).parts[-2]])
         else:
             self.label_list = None
@@ -111,21 +113,24 @@ class GoogleSpeechDataset(Dataset):
             self.bg_adder = AddBackgroundNoise(sounds_path=aug_settings["bg_noise"]["bg_folder"])
 
     def __len__(self):
-        return len(self.data_list)
+        return len(self.data_student_list)
 
     def __getitem__(self, idx):
         if self.cache:
-            x = self.data_list[idx]
+            x_student = self.data_student_list[idx]
+            x_teacher = self.data_teacher_list[idx]
         else:
-            x, _ = librosa.load(path=self.data_list[idx], sr=self.audio_settings["sr"])
+            x_student, _ = librosa.load(path=self.data_student_list[idx], sr=self.audio_settings["sr"])
+            x_teacher, _ = librosa.load(path=self.data_teacher_list[idx], sr=self.audio_settings["sr"])
 
-        x = self.transform(x)
+        x_student = self.transform(x_student)
+        x_teacher = self.transform(x_teacher)
 
         if self.label_list is not None:
             label = self.label_list[idx]
-            return x, label
+            return (x_student, x_teacher), label
         else:
-            return x
+            return (x_student, x_teacher)
 
     def transform(self, x):
         """Applies necessary preprocessing to audio.
@@ -204,8 +209,7 @@ def init_cache(data_list: list, sr: int, cache_level: int, audio_settings: dict,
 
     return cache
 
-
-def get_loader(data_list, config, train=True):
+def get_multidata_loader(data_student_list, data_teacher_list, config, train=True):
     """
     Creates dataloader for training, validation or testing
     :param data_list: Path to data list
@@ -220,7 +224,8 @@ def get_loader(data_list, config, train=True):
             label_map = json.load(f)
 
     dataset = GoogleSpeechDataset(
-        data_list=data_list,
+        data_student_list=data_student_list,
+        data_teacher_list=data_teacher_list,
         label_map=label_map,
         audio_settings=config["hparams"]["audio"],
         aug_settings=config["hparams"]["augment"] if train else None,
@@ -236,5 +241,3 @@ def get_loader(data_list, config, train=True):
     )
 
     return dataloader
-
-
