@@ -40,12 +40,14 @@ def createNoiseFolder(speech_commands, noise_path, noise_types, output_folder, s
         noisy_speech_command_folder = f"{output_folder}/{speech_command}"
         os.makedirs(noisy_speech_command_folder, exist_ok=True)
         speech_command_files = os.listdir(speech_command_folder)
-        for speech_command_file in tqdm(speech_command_files, position=1, leave=True):
-            noise_type = np.random.choice(noise_types)
-            noises_count[noise_type] += 1
-            snr = np.random.choice(snrs)
-            snr_count[f"{snr}"] += 1
-            addNoise(f"{speech_command_folder}/{speech_command_file}", f"{noise_path}/{noise_type}/{noise_type}_train.wav", f"{noisy_speech_command_folder}/{speech_command_file}", snr)
+        clean = np.random.choice([True, False])
+        if not clean:
+            for speech_command_file in tqdm(speech_command_files, position=1, leave=True):
+                noise_type = np.random.choice(noise_types)
+                noises_count[noise_type] += 1
+                snr = np.random.choice(snrs)
+                snr_count[f"{snr}"] += 1
+                addNoise(f"{speech_command_folder}/{speech_command_file}", f"{noise_path}/{noise_type}/{noise_type}_train.wav", f"{noisy_speech_command_folder}/{speech_command_file}", snr)
     return (noises_count, snr_count)
 
 
@@ -70,9 +72,9 @@ if __name__ == "__main__":
     parser.add_argument('-snr', '--snr', type=int, nargs='+', required=True, help="Signal to noise ration in dB")
     # google_speech_commands = "/home/jacobuni/uni-projects/google_speech_commands_v2"
     # noise_path = "/home/jacobuni/uni-projects/kolbek_slt2016"
-    # noise_types = ["bus"]
-    # output_folder = "/home/jacobuni/uni-projects/noisy_google_speech_commands_v2/test2"
-    # snrs = [-10]
+    # noise_types = ["bbl", "bus", "ped", "str"]
+    # output_folder = "/home/jacobuni/uni-projects/noisy_google_speech_commands_v2"
+    # snrs = [-10, -5, 0, 5, 10, 15, 20]
     args = parser.parse_args()
     main(args.speech_commands, args.noise_path, args.noise_type, args.output_folder, args.snr)
     # main(google_speech_commands, noise_path, noise_types, output_folder, snrs)
