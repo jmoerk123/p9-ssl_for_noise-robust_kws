@@ -70,8 +70,8 @@ if __name__ == "__main__":
     parser.add_argument('-snr', '--snr', type=int, nargs='+', required=True, help="Signal to noise ration in dB")
     # google_speech_commands = "/home/jacobuni/uni-projects/google_speech_commands_v2"
     # noise_path = "/home/jacobuni/uni-projects/kolbek_slt2016"
-    # noise_types = ["bbl", "bus"]
-    # output_folder = "/home/jacobuni/uni-projects/noisy_google_speech_commands_v2/test"
+    # noise_types = ["bus"]
+    # output_folder = "/home/jacobuni/uni-projects/noisy_google_speech_commands_v2/test2"
     # snrs = [-10]
     args = parser.parse_args()
     main(args.speech_commands, args.noise_path, args.noise_type, args.output_folder, args.snr)
