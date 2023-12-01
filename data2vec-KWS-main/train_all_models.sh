@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Baselines
-# python  projects/p9-ssl_for_noise-robust_kws/data2vec-KWS-main/train.py --conf projects/p9-ssl_for_noise-robust_kws/data2vec-KWS-main/KWT_configs/kwt1_baseline_mean_config.yaml
-# python train.py --conf KWT_configs/kwt2_baseline_mean_config.yaml
-# python train.py --conf KWT_configs/kwt3_baseline_mean_config.yaml
+python  projects/p9-ssl_for_noise-robust_kws/data2vec-KWS-main/train.py --conf projects/p9-ssl_for_noise-robust_kws/data2vec-KWS-main/KWT_configs/kwt1_baseline_mean_config.yaml
+python train.py --conf KWT_configs/kwt2_baseline_mean_config.yaml
+python train.py --conf KWT_configs/kwt3_baseline_mean_config.yaml
 
 # Data2Vec pretraining
 python projects/p9-ssl_for_noise-robust_kws/data2vec-KWS-main/train_data2vec.py --conf projects/p9-ssl_for_noise-robust_kws/data2vec-KWS-main/data2vec/data2vec_configs/kwt1_data2vec_config.yaml
