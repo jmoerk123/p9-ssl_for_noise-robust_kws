@@ -14,7 +14,10 @@ from tqdm import tqdm
 
 def saveNewTxt(paths, file, save_path):
     # paths = np.genfromtxt(f"{generated_path}/_generated/{file}", dtype=str, delimiter="\n")
-    new_paths = np.char.replace(paths, paths[0][:-23], save_path)
+    new_paths = []
+    for path in paths:
+        new_paths.append(path.replace(path[:55], save_path))
+    # new_paths = np.char.replace(paths, paths[:][53:], save_path)
     os.makedirs(f"{save_path}/_generated", exist_ok=True)
     np.savetxt(f"{save_path}/_generated/{file}", new_paths, delimiter="\n", fmt='%s')
 
@@ -50,7 +53,7 @@ def createNoiseFolder(speech_commands, noise_path, noise_types, output_folder, s
     for snr_c in snrs:
         snr_count[f"{snr_c}"] = 0
     for speech_command in tqdm(speech_commands):
-        noisy_speech_command_path = f"{output_folder}/{speech_command[-22:]}"
+        noisy_speech_command_path = f"{output_folder}/{speech_command[56:]}"
         os.makedirs(noisy_speech_command_path[:-23], exist_ok=True)
         noise_type = np.random.choice(noise_types)
         noises_count[noise_type] += 1
