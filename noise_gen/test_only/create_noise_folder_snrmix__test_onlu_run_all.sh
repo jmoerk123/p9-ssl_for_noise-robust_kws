@@ -8,7 +8,7 @@ bash noise_gen/test_only/create_noise_folder_snrmix_tests_only_bus.sh
 
 echo "BUS done"
 
-bash noise_gen/test_only/create_noise_folder_snrmix_tests_only_ped.
+bash noise_gen/test_only/create_noise_folder_snrmix_tests_only_ped.sh
 
 echo "PED done"
 
