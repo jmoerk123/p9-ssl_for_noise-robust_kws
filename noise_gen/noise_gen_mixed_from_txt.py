@@ -68,18 +68,18 @@ def main(speech_commands_folder, noise_path, noise_types, output_folder, snrs):
 
 
 if __name__ == "__main__":
-    # parser = ArgumentParser(description="Arguments for generating noisy trainign data")
-    # parser.add_argument('-scf', '--speech_commands_file', type=str, required=True, help="path to file with path to all files e.g., testing.txt")
-    # parser.add_argument('-np', '--noise_path', type=str, required=True, help="Path of the noise file")
-    # parser.add_argument('-nt', '--noise_type', action="append", required=True, help="Noise type")
-    # parser.add_argument('-of', '--output_folder', type=str, required=True, help="Path to save the new generated data")
-    # parser.add_argument('-snr', '--snr', type=int, nargs='+', required=True, help="Signal to noise ration in dB")
-    # args = parser.parse_args()
-    # main(args.speech_commands_file, args.noise_path, args.noise_type, args.output_folder, args.snr)
-    google_speech_commands_file = "/home/jacobuni/uni-projects/google_speech_commands_v2/_generated/testing_list.txt"
-    noise_path = "/home/jacobuni/uni-projects/kolbek_slt2016"
-    noise_types = ["bus"]
-    output_folder = "/home/jacobuni/uni-projects/noisy_google_speech_commands_v2/test2"
-    snrs = [-10]
-    main(google_speech_commands_file, noise_path, noise_types, output_folder, snrs)
+    parser = ArgumentParser(description="Arguments for generating noisy trainign data")
+    parser.add_argument('-scf', '--speech_commands_file', type=str, required=True, help="path to file with path to all files e.g., testing.txt")
+    parser.add_argument('-np', '--noise_path', type=str, required=True, help="Path of the noise file")
+    parser.add_argument('-nt', '--noise_type', action="append", required=True, help="Noise type")
+    parser.add_argument('-of', '--output_folder', type=str, required=True, help="Path to save the new generated data")
+    parser.add_argument('-snr', '--snr', type=int, nargs='+', required=True, help="Signal to noise ration in dB")
+    args = parser.parse_args()
+    main(args.speech_commands_file, args.noise_path, args.noise_type, args.output_folder, args.snr)
+    # google_speech_commands_file = "/home/jacobuni/uni-projects/google_speech_commands_v2/_generated/testing_list.txt"
+    # noise_path = "/home/jacobuni/uni-projects/kolbek_slt2016"
+    # noise_types = ["bus"]
+    # output_folder = "/home/jacobuni/uni-projects/noisy_google_speech_commands_v2/test2"
+    # snrs = [-10]
+    # main(google_speech_commands_file, noise_path, noise_types, output_folder, snrs)
 
