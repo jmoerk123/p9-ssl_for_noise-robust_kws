@@ -19,7 +19,7 @@ from utils.misc import seed_everything, count_params, get_model, calc_step, log
 def test_multi(model, config, criterion, noises, snr):
     test_acc_list, test_loss_list = [], []
     for noise in noises:
-        with open(f"data/paper_test_google_speech_commands/{noise}/{snr}/_generated/testing_list.txt", "r") as f:
+        with open(f"data/paper_test_google_speech_commands/{noise}/snr{snr}/_generated/testing_list.txt", "r") as f:
             test_list = f.read().rstrip().split("\n")
 
         testloader = get_loader(test_list, config, train=False)
