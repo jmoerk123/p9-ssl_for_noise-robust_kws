@@ -1,0 +1,1 @@
+python projects/p9-ssl_for_noise-robust_kws/data2vec-KWS-main/test_new.py --conf projects/p9-ssl_for_noise-robust_kws/data2vec-KWS-main/test_configs/paper/known/kwt1_test_config_known.yaml --ckpt $HOME/data/runs/kwt1_baseline_mean_clean/best.pth -nt bus bbl ped str -snr -10
