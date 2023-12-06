@@ -30,6 +30,7 @@ def test_multi(model, config, criterion, noises, snr):
     
     acc = sum(test_acc_list)/len(test_acc_list)
     loss = sum(test_loss_list)/len(test_loss_list)
+    return (acc, loss)
 
 
 def testing(config, noises, snr):
@@ -37,7 +38,6 @@ def testing(config, noises, snr):
     Initiates and executes all the steps involved with KWT model training
     :param config: KWT configuration
     """
-
     # with open(config["test_list_file"], "r") as f:
     #     test_list = f.read().rstrip().split("\n")
 
@@ -109,7 +109,7 @@ def main(args):
         else:
             wandb.login()
 
-        with wandb.init(project=config["exp"]["proj_name"], name=config["exp"]["exp_name"], config=config["hparams"]):
+        with wandb.init(project=config["exp"]["proj_name"], name=config["exp"]["exp_name"]+args.snr, config=config["hparams"]):
             testing(config, args.noise_types, args.snr)
     
     else:
@@ -120,10 +120,11 @@ if __name__ == "__main__":
     parser = ArgumentParser("Driver code.")
     parser.add_argument("--conf", type=str, required=True, help="Path to config.yaml file.")
     parser.add_argument("--ckpt", type=str, required=False, help="Path to checkpoint file.", default=None)
-    parser.add_argument('-nt', '--noise_types', type=int, nargs='+', required=True, help="Noise types")
-    parser.add_argument('-snr', '--snr', type=int, nargs='+', required=True, help="Signal to noise ration in dB")
+    parser.add_argument('-nt', '--noise_types', type=str, nargs='+', required=True, help="Noise types")
+    parser.add_argument('-snr', '--snr', type=int, required=True, help="Signal to noise ration in dB")
     parser.add_argument("--id", type=str, required=False, help="Obtional experiment identifier.", default=None)
 
     args = parser.parse_args()
-
     main(args)
+
+
