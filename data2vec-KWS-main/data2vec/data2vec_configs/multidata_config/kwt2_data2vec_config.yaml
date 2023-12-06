@@ -2,7 +2,7 @@
 data_root: data/google_speech_commands/
 train_teacher_list_file: data/google_speech_commands/_generated/pretraining_list.txt # Pretraining set is used
 train_student_list_file: data/paper_busxbblxpedxstr_google_speech_commands/snrmix_clean/_generated/pretraining_list.txt
-val_list_file: data/paper_busxbblxpedxstr_google_speech_commands/snrmix_clean/validation_list.txt
+val_list_file: data/paper_busxbblxpedxstr_google_speech_commands/snrmix_clean/_generated/validation_list.txt
 test_list_file: data/paper_busxbblxpedxstr_google_speech_commands/snrmix_clean/_generated/testing_list.txt
 label_map: # No labels used for pretraining
 
