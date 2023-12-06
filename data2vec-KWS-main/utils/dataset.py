@@ -103,7 +103,8 @@ class GoogleSpeechDataset(Dataset):
             self.label_list = []
             label_2_idx = {v: int(k) for k, v in label_map.items()}
             for path in data_list:
-                if path != "\n":
+                if path != "":
+                    print(f'path: {path}')
                     self.label_list.append(label_2_idx[Path(path).parts[-2]])
         else:
             self.label_list = None
