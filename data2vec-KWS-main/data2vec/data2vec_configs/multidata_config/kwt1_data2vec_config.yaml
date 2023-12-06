@@ -1,11 +1,10 @@
 # sample config
 data_root: data/google_speech_commands/
 train_teacher_list_file: data/google_speech_commands/_generated/pretraining_list.txt # Pretraining set is used
-train_student_list_file: data/busxbbl_google_speech_commands/snrmix/_generated/pretraining_list.txt
-val_list_file: data/busxbbl_google_speech_commands/snrmix/_generated/validation_list.txt
-test_list_file: data/busxbbl_google_speech_commands/snrmix/_generated/testing_list.txt
+train_student_list_file: data/paper_busxbblxpedxstr_google_speech_commands/snrmix_clean/_generated/pretraining_list.txt
+val_list_file: data/paper_busxbblxpedxstr_google_speech_commands/snrmix_clean/_generated/validation_list.txt
+test_list_file: data/paper_busxbblxpedxstr_google_speech_commands/snrmix_clean/_generated/testing_list.txt
 label_map: # No labels used for pretraining
-
 
 modality: audio # Use instance norm
 
@@ -14,7 +13,7 @@ exp:
     wandb_api_key: 
     proj_name: data2vec_KWS
     exp_dir: data/runs
-    exp_name: kwt1_data2vec_multidata
+    exp_name: kwt1_data2vec_multidata+clean
     device: auto
     log_freq: 20    # log every l_f steps
     log_to_file: True
@@ -23,6 +22,7 @@ exp:
     n_workers: 1
     pin_memory: True
     cache: 2 # 0 -> no cache | 1 -> cache wavs | 2 -> cache specs; stops wav augments
+    
     
 hparams:
     seed: 0
