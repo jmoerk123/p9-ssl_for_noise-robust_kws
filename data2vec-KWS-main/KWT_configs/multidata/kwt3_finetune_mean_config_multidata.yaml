@@ -12,7 +12,7 @@ exp:
     wandb_api_key: 
     proj_name: data2vec_KWS
     exp_dir: data/runs
-    exp_name: kwt3_finetune_mean_multidata
+    exp_name: kwt3_finetune_mean_multidata+clean
     device: auto
     log_freq: 20    # log every l_f steps
     log_to_file: True
