@@ -21,8 +21,9 @@ def test_multi(model, config, criterion, noises, snr):
     for noise in noises:
         with open(f"data/paper_test_google_speech_commands/{noise}/snr{snr}/_generated/testing_list.txt", "r") as f:
             test_list = f.read().rstrip().split("\n")
-
-        testloader = get_loader(test_list, config, train=False)
+            
+        test_list2 = [i for i in test_list if i != '']
+        testloader = get_loader(test_list2, config, train=False)
 
         test_acc, test_loss = evaluate(model, criterion, testloader, config["hparams"]["device"])
         test_acc_list.append(test_acc)
