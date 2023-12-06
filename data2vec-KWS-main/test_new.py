@@ -109,7 +109,7 @@ def main(args):
         else:
             wandb.login()
 
-        with wandb.init(project=config["exp"]["proj_name"], name=config["exp"]["exp_name"]+args.snr, config=config["hparams"]):
+        with wandb.init(project=config["exp"]["proj_name"], name=f"{config["exp"]["exp_name"]}_{args.snr}", config=config["hparams"]):
             testing(config, args.noise_types, args.snr)
     
     else:
