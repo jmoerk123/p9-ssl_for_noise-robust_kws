@@ -47,6 +47,8 @@ def testing(config, noises, snr):
     # model
 
     config["exp"]["save_dir"] = os.path.join(config["exp"]["exp_dir"], config["exp"]["exp_name"])
+    os.makedirs(config["exp"]["save_dir"], exist_ok=True)
+
 
     model = get_model(config["hparams"]["model"])
     if args.ckpt:
