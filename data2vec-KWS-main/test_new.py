@@ -21,7 +21,7 @@ def test_multi(model, config, criterion, noises, snr):
     for noise in noises:
         with open(f"data/paper_test_google_speech_commands/{noise}/snr{snr}/_generated/testing_list.txt", "r") as f:
             test_list = f.read().rstrip().split("\n")
-            
+
         test_list2 = [i for i in test_list if i != '']
         testloader = get_loader(test_list2, config, train=False)
 
@@ -45,6 +45,9 @@ def testing(config, noises, snr):
     # testloader = get_loader(test_list, config, train=False)
 
     # model
+
+    config["exp"]["save_dir"] = os.path.join(config["exp"]["exp_dir"], config["exp"]["exp_name"])
+
     model = get_model(config["hparams"]["model"])
     if args.ckpt:
         ckpt = torch.load(args.ckpt, map_location="cpu")
