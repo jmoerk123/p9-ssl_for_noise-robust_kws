@@ -80,6 +80,11 @@ def main(args):
     if args.id:
         config["exp"]["exp_name"] = config["exp"]["exp_name"] + args.id
 
+    if args.name:
+        model_name = f"{config["exp"]["exp_name"]}_{args.name}"
+    else:
+        model_name = config["exp"]["exp_name"]
+
     if config["exp"]["wandb"]:
         if config["exp"]["wandb_api_key"] is not None:
             with open(config["exp"]["wandb_api_key"], "r") as f:
@@ -91,7 +96,7 @@ def main(args):
         else:
             wandb.login()
 
-        with wandb.init(project=config["exp"]["proj_name"], name=config["exp"]["exp_name"], config=config["hparams"]):
+        with wandb.init(project=config["exp"]["proj_name"], name=model_name, config=config["hparams"]):
             testing(config)
     
     else:
@@ -103,6 +108,7 @@ if __name__ == "__main__":
     parser.add_argument("--conf", type=str, required=True, help="Path to config.yaml file.")
     parser.add_argument("--ckpt", type=str, required=False, help="Path to checkpoint file.", default=None)
     parser.add_argument("--id", type=str, required=False, help="Obtional experiment identifier.", default=None)
+    parser.add_argument("--name", type=str, required=False, help="Add to name of model", default=None)
     args = parser.parse_args()
 
     main(args)
