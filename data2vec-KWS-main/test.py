@@ -81,7 +81,7 @@ def main(args):
         config["exp"]["exp_name"] = config["exp"]["exp_name"] + args.id
 
     if args.name:
-        model_name = f"{config["exp"]["exp_name"]}_{args.name}"
+        model_name = f"{config['exp']['exp_name']}_{args.name}"
     else:
         model_name = config["exp"]["exp_name"]
 
