@@ -22,6 +22,9 @@ def testing(config):
     :param config: KWT configuration
     """
 
+    config["exp"]["save_dir"] = os.path.join(config["exp"]["exp_dir"], config["exp"]["exp_name"])
+    os.makedirs(config["exp"]["save_dir"], exist_ok=True)
+
     with open(config["test_list_file"], "r") as f:
         test_list = f.read().rstrip().split("\n")
 
